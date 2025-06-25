@@ -20,7 +20,7 @@ import {
   FileTextOutlined,
   PlusCircleOutlined,
 } from "@ant-design/icons";
-import API from "../utils/api"; // ✅ Use your API instance
+import API from "../utils/api"; 
 
 export default function Main() {
   const [bookmarks, setBookmarks] = useState([]);
