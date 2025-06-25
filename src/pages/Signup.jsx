@@ -1,7 +1,6 @@
-// src/pages/Signup.js
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import API from "../utils/api"; // Adjust path as needed
+import API from "../utils/api";
 import "./Signup.css";
 
 export default function Signup() {
@@ -13,7 +12,7 @@ export default function Signup() {
   const handleSignup = async (e) => {
     e.preventDefault();
     try {
-      const res = await API.post("/auth/signup", {
+      await API.post("/auth/signup", {
         username,
         email,
         password,
@@ -21,44 +20,59 @@ export default function Signup() {
       alert("Signup successful. Please login.");
       navigate("/login");
     } catch (err) {
-      console.error("Signup error:", err);
-      const message =
-        err.response?.data?.message || "Signup failed. Please try again.";
+      const message = err.response?.data?.message || "Signup failed. Please try again.";
       alert(message);
     }
   };
 
   return (
-    <div className="signup-container">
-      <form onSubmit={handleSignup} className="signup-form">
-        <h2>Join Bookmark Saver</h2>
-        <p>Get started by creating your account</p>
-        <input
-          type="text"
-          placeholder="Enter your Username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          required
-        />
-        <input
-          type="email"
-          placeholder="Enter your Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-        <input
-          type="password"
-          placeholder="Enter Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-        <button type="submit">Sign Up</button>
-        <p className="login-link">
-          Already have an account? <a href="/login">Log in</a>
-        </p>
-      </form>
+    <div className="signup-page">
+      <div className="signup-container">
+        <div className="signup-left">
+          <h2>Create Your Account</h2>
+          <p className="subtext">Join Bookmark Saver and start saving smarter</p>
+          <form onSubmit={handleSignup} className="signup-form">
+            <input
+              type="text"
+              placeholder="Username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              required
+            />
+            <input
+              type="email"
+              placeholder="Email Address"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+            <div className="options">
+              <label>
+                <input type="checkbox" /> Keep me logged in
+              </label>
+              <a href="#">Forgot password?</a>
+            </div>
+            <button type="submit" className="submit-btn">Sign Up</button>
+            <p className="login-link">
+              Already have an account? <a href="/login">Log in</a>
+            </p>
+          </form>
+        </div>
+        <div className="signup-right">
+          <img src="https://i.pinimg.com/736x/15/47/c1/1547c11ae29089c573614ed932e8cf4a.jpg" alt="Bookmark" />
+          <h3>Bookmark Saver</h3>
+          <p>
+            Save your favorite websites, organize them, and access them anytime from anywhere.
+          </p>
+        </div>
+      </div>
     </div>
   );
 }
