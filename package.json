@@ -19,8 +19,12 @@
     "helmet": "^8.1.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
+<<<<<<< HEAD
     "react-router-dom": "^7.6.2",
     "xss-clean": "^0.1.4"
+=======
+    "react-router-dom": "^7.6.2"
+>>>>>>> 75759f2d9443831aafacec641d77101b77f4f1fd
   },
   "devDependencies": {
     "@eslint/js": "^9.29.0",
